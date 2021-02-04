@@ -1,9 +1,9 @@
 import React from 'react';
-import HeaderView from '../header-view';
+import IndexView from '../index-view';
 
 const App = () => {
   return (
-    <HeaderView/>
+    <IndexView/>
   );
 };
 
