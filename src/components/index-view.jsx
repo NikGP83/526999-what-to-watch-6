@@ -1,6 +1,11 @@
 import React from 'react';
+import FilmItem from './film-item';
+import PropTypes from 'prop-types';
+import {getFilmById} from './app/utils/moc-data';
 
-const IndexView = () => {
+
+const IndexView = (props) => {
+  const {filmIds} = props;
   return (
     <>
       <section className="movie-card">
@@ -96,7 +101,7 @@ const IndexView = () => {
           </ul>
 
           <div className="catalog__movies-list">
-
+            {filmIds.map((id) => (<FilmItem key = {id} {...getFilmById(id)} />))}
           </div>
 
           <div className="catalog__more">
@@ -122,5 +127,7 @@ const IndexView = () => {
   );
 };
 
-
+IndexView.propTypes = {
+  filmIds: PropTypes.array
+};
 export default IndexView;
