@@ -1,5 +1,5 @@
 import React from 'react';
-import IndexView from '../index-view';
+import IndexView from '../main-page';
 import PropTypes from 'prop-types';
 
 
