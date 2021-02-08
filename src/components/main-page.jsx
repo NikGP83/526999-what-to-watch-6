@@ -1,12 +1,12 @@
 import React from 'react';
 import FilmItem from './film-item';
 import PropTypes from 'prop-types';
-import { getFilmById } from './app/utils/moc-data';
-import { Link } from 'react-router-dom';
+import {getFilmById} from './app/utils/moc-data';
+import {Link} from 'react-router-dom';
 
 
 const MainPage = (props) => {
-  const { filmIds } = props;
+  const {filmIds} = props;
   return (
     <>
       <section className="movie-card">
