@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MoviePage = () => {
   return (
@@ -22,7 +23,9 @@ const MoviePage = () => {
 
             <div className="user-block">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <Link to='/my-list'>
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </Link>
               </div>
             </div>
           </header>
