@@ -16,19 +16,25 @@ const App = (filmIds) => {
         <Route exact path="/">
           <MainPage {...filmIds} />
         </Route>
-        <Route exact path="/sign-in">
+        <Route exact path="/login">
           <SignIn />
         </Route>
-        <Route exact path="/movie">
+        <Route exact path="/films/">
+          <MoviePage />
+        </Route>
+        <Route exact path="/films/:id?">
           <MoviePage />
         </Route>
         <Route exact path="/my-list">
           <MyList />
         </Route>
-        <Route exact path="/add-review">
+        <Route exact path="/films/:id?/review">
           <AddReview />
         </Route>
-        <Route exact path="/player">
+        <Route exact path="/player/">
+          <Player />
+        </Route>
+        <Route exact path="/player/:id?">
           <Player />
         </Route>
         <Route>
