@@ -2,9 +2,10 @@ import React from 'react';
 import FilmItem from './film-item';
 import PropTypes from 'prop-types';
 import {getFilmById} from './app/utils/moc-data';
+import {Link} from 'react-router-dom';
 
 
-const IndexView = (props) => {
+const MainPage = (props) => {
   const {filmIds} = props;
   return (
     <>
@@ -17,16 +18,18 @@ const IndexView = (props) => {
 
         <header className="page-header movie-card__head">
           <div className="logo">
-            <a className="logo__link">
+            <Link className="logo__link" to="/">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="user-block">
             <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              <Link to='/my-list'>
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </Link>
             </div>
           </div>
         </header>
@@ -101,7 +104,7 @@ const IndexView = (props) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {filmIds.map((id) => (<FilmItem key = {id} {...getFilmById(id)} />))}
+            {filmIds.map((id) => (<FilmItem key={id} {...getFilmById(id)} />))}
           </div>
 
           <div className="catalog__more">
@@ -127,7 +130,7 @@ const IndexView = (props) => {
   );
 };
 
-IndexView.propTypes = {
+MainPage.propTypes = {
   filmIds: PropTypes.array
 };
-export default IndexView;
+export default MainPage;
