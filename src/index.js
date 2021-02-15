@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import {getFilmIds} from './components/app/utils/moc-data';
+import {getFilmIds} from './mocks/films.js';
 
 const filmIds = getFilmIds();
 

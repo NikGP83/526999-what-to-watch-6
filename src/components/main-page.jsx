@@ -1,7 +1,7 @@
 import React from 'react';
 import FilmItem from './film-item';
 import PropTypes from 'prop-types';
-import {getFilmById} from './app/utils/moc-data';
+import {getFilmById} from '../mocks/films.js';
 import {Link} from 'react-router-dom';
 
 
