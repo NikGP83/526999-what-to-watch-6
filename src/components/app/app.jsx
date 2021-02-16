@@ -9,18 +9,18 @@ import Player from '../player';
 import MoviePage from '../movie-page';
 
 
-const App = (filmIds) => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage {...filmIds} />
+          <MainPage {...props} />
         </Route>
         <Route exact path="/login">
           <SignIn />
         </Route>
         <Route exact path="/films/">
-          <MoviePage />
+          <MoviePage/>
         </Route>
         <Route exact path="/films/:id?">
           <MoviePage />
@@ -46,6 +46,6 @@ const App = (filmIds) => {
 };
 App.propTypes = {
   filmIds: PropTypes.array,
-  anotherParam: PropTypes.string
+  filmById: PropTypes.func
 };
 export default App;
