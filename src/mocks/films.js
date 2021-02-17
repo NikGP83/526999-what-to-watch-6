@@ -1,5 +1,7 @@
 const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
+const filmsPoster = [`img/the-grand-budapest-hotel-poster.jpg`, `img/macbeth.jpg`, `img/aviator.jpg`];
+
 const mocDataFilms = [];
 
 for (let i = 0; i < 8; i++) {
@@ -7,7 +9,7 @@ for (let i = 0; i < 8; i++) {
     id: i,
     filmName: `The Grand Budapest Hotel Номер ${i}`,
     posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
-    previewImage: `img/the-grand-budapest-hotel-poster.jpg`,
+    previewImage: filmsPoster[getRandom(0, 2)],
     backgrounImage: `img/the-grand-budapest-hotel-bg.jpg`,
     backgroundColor: `#ffffff`,
     videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,

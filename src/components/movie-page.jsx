@@ -3,7 +3,6 @@ import {Link, useParams} from 'react-router-dom';
 
 const MoviePage = () => {
   const {id} = useParams();
-  console.log(id)
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -53,7 +52,7 @@ const MoviePage = () => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <Link to={`review/${id}`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
