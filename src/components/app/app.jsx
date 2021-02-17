@@ -26,13 +26,13 @@ const App = (props) => {
           <MoviePage />
         </Route>
         <Route exact path="/my-list">
-          <MyList />
+          <MyList {...props}/>
         </Route>
         <Route exact path="/films/:id?/review">
-          <AddReview />
+          <AddReview {...props}/>
         </Route>
         <Route exact path="/player/">
-          <Player />
+          <Player {...props}/>
         </Route>
         <Route exact path="/player/:id?">
           <Player />
