@@ -1,16 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Link, useParams} from 'react-router-dom';
 
-const AddReview = () => {
+const AddReview = (props) => {
   const {id} = useParams();
-  // const {filmById} = props;
-  console.log(id);
+  const {filmById} = props;
+  const {previewImage, filmName, genre, released, scoresCount, rating} = (filmById(Number(id)));
+  const [userReview, setUserReview] = React.useState({
+    "review-text": ``
+  });
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+  };
+  const handleFieldChange = (evt) => {
+    const {name, value} = evt.target;
+    setUserReview({...userReview, [name]: value});
+  };
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={previewImage} alt={filmName} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -27,7 +39,7 @@ const AddReview = () => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <a href="movie-page.html" className="breadcrumbs__link">{filmName}</a>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -45,7 +57,7 @@ const AddReview = () => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={previewImage} alt={filmName} width="218" height="327" />
         </div>
       </div>
 
@@ -86,9 +98,9 @@ const AddReview = () => {
           </div>
 
           <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+            <textarea onInput={handleFieldChange} className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
             <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">Post</button>
+              <button onClick={handleSubmit} className="add-review__btn" type="submit">Post</button>
             </div>
 
           </div>
@@ -101,7 +113,8 @@ const AddReview = () => {
 
 AddReview.propTypes = {
   filmById: PropTypes.func,
-  previewImage: PropTypes.string
+  previewImage: PropTypes.string,
+  filmName: PropTypes.string
 };
 
 export default AddReview;

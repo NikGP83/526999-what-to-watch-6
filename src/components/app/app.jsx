@@ -20,7 +20,7 @@ const App = (props) => {
           <SignIn />
         </Route>
         <Route exact path="/films/">
-          <MoviePage {...props}/>
+          <MoviePage />
         </Route>
         <Route exact path="/films/:id?">
           <MoviePage {...props}/>
@@ -29,16 +29,16 @@ const App = (props) => {
           <MyList {...props}/>
         </Route>
         <Route exact path="/films/review/">
-          <AddReview {...props}/>
-        </Route>
-        <Route exact path="/films/review/:id?">
           <AddReview />
         </Route>
+        <Route exact path="/films/review/:id?">
+          <AddReview {...props}/>
+        </Route>
         <Route exact path="/player/">
-          <Player {...props}/>
+          <Player />
         </Route>
         <Route exact path="/player/:id?">
-          <Player />
+          <Player {...props}/>
         </Route>
         <Route>
           <h2>404 Not Found</h2>

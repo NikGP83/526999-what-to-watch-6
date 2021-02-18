@@ -11,7 +11,7 @@ const MoviePage = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt={filmName} />
+            <img src={previewImage} alt={filmName} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
