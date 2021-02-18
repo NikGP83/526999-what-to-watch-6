@@ -20,10 +20,10 @@ const App = (props) => {
           <SignIn />
         </Route>
         <Route exact path="/films/">
-          <MoviePage/>
+          <MoviePage {...props}/>
         </Route>
         <Route exact path="/films/:id?">
-          <MoviePage />
+          <MoviePage {...props}/>
         </Route>
         <Route exact path="/my-list">
           <MyList {...props}/>

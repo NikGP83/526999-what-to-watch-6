@@ -1,14 +1,17 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const MoviePage = () => {
+const MoviePage = (props) => {
   const {id} = useParams();
+  const {filmById} = props;
+  const {previewImage, filmName, genre, released, scoresCount, rating} = (filmById(Number(id)));
   return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src="img/bg-the-grand-budapest-hotel.jpg" alt={filmName} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -33,10 +36,10 @@ const MoviePage = () => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{filmName}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -61,7 +64,7 @@ const MoviePage = () => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={previewImage} alt={filmName} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -80,10 +83,10 @@ const MoviePage = () => {
               </nav>
 
               <div className="movie-rating">
-                <div className="movie-rating__score">8,9</div>
+                <div className="movie-rating__score">{rating}</div>
                 <p className="movie-rating__meta">
                   <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">240 ratings</span>
+                  <span className="movie-rating__count">{scoresCount} ratings</span>
                 </p>
               </div>
 
@@ -160,6 +163,12 @@ const MoviePage = () => {
       </div>
     </>
   );
+};
+
+MoviePage.propTypes = {
+  filmById: PropTypes.func,
+  previewImage: PropTypes.string,
+  filmName: PropTypes.string
 };
 
 export default MoviePage;

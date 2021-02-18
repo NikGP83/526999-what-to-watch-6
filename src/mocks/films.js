@@ -7,7 +7,7 @@ const mocDataFilms = [];
 for (let i = 0; i < 8; i++) {
   mocDataFilms.push({
     id: i,
-    filmName: `The Grand Budapest Hotel Номер ${i}`,
+    filmName: `${i}The Grand ${i} Budapest Hotel Номер ${i}`,
     posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
     previewImage: filmsPoster[getRandom(0, 2)],
     backgrounImage: `img/the-grand-budapest-hotel-bg.jpg`,
