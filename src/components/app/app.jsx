@@ -1,7 +1,7 @@
 import React from 'react';
 import MainPage from '../main-page';
 import PropTypes from 'prop-types';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
 import SignIn from '../sign-in';
 import MyList from '../my-list';
 import AddReview from '../add-review';
@@ -28,20 +28,17 @@ const App = (props) => {
         <Route exact path="/my-list">
           <MyList {...props}/>
         </Route>
-        <Route exact path="/films/review/">
-          <AddReview />
-        </Route>
-        <Route exact path="/films/review/:id?">
+        <Route exact path="/films/:id?/review">
           <AddReview {...props}/>
-        </Route>
-        <Route exact path="/player/">
-          <Player />
         </Route>
         <Route exact path="/player/:id?">
           <Player {...props}/>
         </Route>
-        <Route>
+        <Route exact path="/not-found">
           <h2>404 Not Found</h2>
+        </Route>
+        <Route>
+          <Redirect to="/not-found"/>
         </Route>
       </Switch>
     </BrowserRouter>

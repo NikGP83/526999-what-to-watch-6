@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 
 const MainPage = (props) => {
-  const {filmIds, filmById} = props;
+  const {filmIds} = props;
   return (
     <>
       <section className="movie-card">
@@ -104,7 +104,10 @@ const MainPage = (props) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {filmIds.map((id) => (<FilmItem to = {`/films/${id}`} key={id} {...filmById(id)} />))}
+            {filmIds.map((id) => {
+              return <FilmItem to={`/films/${id}`} key={id} id ={id}/>;
+            })
+            }
           </div>
 
           <div className="catalog__more">
@@ -132,6 +135,5 @@ const MainPage = (props) => {
 
 MainPage.propTypes = {
   filmIds: PropTypes.array,
-  filmById: PropTypes.func
 };
 export default MainPage;

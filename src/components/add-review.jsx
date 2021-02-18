@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, Redirect} from 'react-router-dom';
 
 const AddReview = (props) => {
   const {id} = useParams();
   const {filmById} = props;
-  const {previewImage, filmName, genre, released, scoresCount, rating} = (filmById(Number(id)));
+  const searchResult = (filmById(Number(id)));
+  if (typeof searchResult === `undefined`) {
+    return <Redirect to="/not-found" />;
+  }
+  const {previewImage, filmName} = searchResult;
   const [userReview, setUserReview] = React.useState({
     "review-text": ``
   });
@@ -102,11 +106,9 @@ const AddReview = (props) => {
             <div className="add-review__submit">
               <button onClick={handleSubmit} className="add-review__btn" type="submit">Post</button>
             </div>
-
           </div>
         </form>
       </div>
-
     </section>
   );
 };

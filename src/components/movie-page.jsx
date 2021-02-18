@@ -1,11 +1,15 @@
 import React from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, Redirect, useParams} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const MoviePage = (props) => {
   const {id} = useParams();
   const {filmById} = props;
-  const {previewImage, filmName, genre, released, scoresCount, rating} = (filmById(Number(id)));
+  const searchResult = (filmById(Number(id)));
+  if (typeof searchResult === `undefined`) {
+    return <Redirect to="/not-found" />;
+  }
+  const {previewImage, filmName, genre, released, scoresCount, rating} = searchResult;
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -55,7 +59,7 @@ const MoviePage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={`review/${id}`} className="btn movie-card__button">Add review</Link>
+                <Link to={`${id}/review`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>

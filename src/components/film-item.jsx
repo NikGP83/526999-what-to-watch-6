@@ -2,9 +2,16 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {FilmItemProps} from './film-item-props';
+import {getFilmById} from '../mocks/films';
 
 const FilmItem = (props) => {
-  const {filmName, previewImage, to} = props;
+  const {id, to} = props;
+
+  const filmByIdResult = getFilmById(id);
+  if (typeof filmByIdResult === `undefined`) {
+    window.location.reload();
+  }
+  const {filmName, previewImage} = filmByIdResult;
 
   return <article className="small-movie-card catalog__movies-card">
     <div className="small-movie-card__image">
