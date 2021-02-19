@@ -1,7 +1,7 @@
 import React from 'react';
 import FilmItem from './film-item';
 import PropTypes from 'prop-types';
-import {getFilmById} from './app/utils/moc-data';
+// import {getFilmById} from '../mocks/films.js';
 import {Link} from 'react-router-dom';
 
 
@@ -104,7 +104,10 @@ const MainPage = (props) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {filmIds.map((id) => (<FilmItem key={id} {...getFilmById(id)} />))}
+            {filmIds.map((id) => {
+              return <FilmItem to={`/films/${id}`} key={id} id ={id}/>;
+            })
+            }
           </div>
 
           <div className="catalog__more">
@@ -131,6 +134,6 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  filmIds: PropTypes.array
+  filmIds: PropTypes.array,
 };
 export default MainPage;

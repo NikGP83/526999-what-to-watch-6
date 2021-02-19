@@ -1,7 +1,7 @@
 import React from 'react';
 import MainPage from '../main-page';
 import PropTypes from 'prop-types';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
 import SignIn from '../sign-in';
 import MyList from '../my-list';
 import AddReview from '../add-review';
@@ -9,12 +9,12 @@ import Player from '../player';
 import MoviePage from '../movie-page';
 
 
-const App = (filmIds) => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage {...filmIds} />
+          <MainPage {...props} />
         </Route>
         <Route exact path="/login">
           <SignIn />
@@ -23,22 +23,22 @@ const App = (filmIds) => {
           <MoviePage />
         </Route>
         <Route exact path="/films/:id?">
-          <MoviePage />
+          <MoviePage {...props}/>
         </Route>
         <Route exact path="/my-list">
-          <MyList />
+          <MyList {...props}/>
         </Route>
         <Route exact path="/films/:id?/review">
-          <AddReview />
-        </Route>
-        <Route exact path="/player/">
-          <Player />
+          <AddReview {...props}/>
         </Route>
         <Route exact path="/player/:id?">
-          <Player />
+          <Player {...props}/>
+        </Route>
+        <Route exact path="/not-found">
+          <h2>404 Not Found</h2>
         </Route>
         <Route>
-          <h2>404 Not Found</h2>
+          <Redirect to="/not-found"/>
         </Route>
       </Switch>
     </BrowserRouter>
@@ -46,6 +46,6 @@ const App = (filmIds) => {
 };
 App.propTypes = {
   filmIds: PropTypes.array,
-  anotherParam: PropTypes.string
+  filmById: PropTypes.func
 };
 export default App;
