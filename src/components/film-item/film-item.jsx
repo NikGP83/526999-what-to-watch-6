@@ -1,8 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {FilmItemProps} from './film-item-props';
-import {getFilmById} from '../mocks/films';
+import {getFilmById} from '../../mocks/films';
+import Player from '../player/player';
 
 const FilmItem = (props) => {
   const {id, to} = props;
