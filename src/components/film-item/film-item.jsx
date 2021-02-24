@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {FilmItemProps} from './film-item-props';
 import {getFilmById} from '../../mocks/films';
-import Player from '../player/player';
+import VideoPlayer from '../player/video-player';
 
 const FilmItem = (props) => {
   const {id, to} = props;
@@ -11,12 +11,12 @@ const FilmItem = (props) => {
   if (typeof filmByIdResult === `undefined`) {
     window.location.reload();
   }
-  const {filmName, previewImage} = filmByIdResult;
+  const {filmName, posterImage} = filmByIdResult;
 
   return <article className="small-movie-card catalog__movies-card">
     <div className="small-movie-card__image">
       <Link to = {to} >
-        <img onClick = {onclick} src={previewImage} alt={filmName} width="280" height="175" />
+        <VideoPlayer filmName={filmName} posterImage={posterImage}/>
       </Link>
     </div>
     <h3 className="small-movie-card__title">

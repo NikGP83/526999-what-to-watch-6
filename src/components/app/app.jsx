@@ -2,7 +2,7 @@ import React from 'react';
 import MainPage from '../main-page/main-page';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
-import SignIn from '../sign-in';
+import SignIn from '../header/sign-in';
 import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import Player from '../player/player';
@@ -32,7 +32,7 @@ const App = (props) => {
           <AddReview {...props}/>
         </Route>
         <Route exact path="/player/:id?">
-          <Player {...props}/>
+          <Player />
         </Route>
         <Route exact path="/not-found">
           <h2>404 Not Found</h2>
