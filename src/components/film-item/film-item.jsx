@@ -11,12 +11,12 @@ const FilmItem = (props) => {
   if (typeof filmByIdResult === `undefined`) {
     window.location.reload();
   }
-  const {filmName, posterImage} = filmByIdResult;
+  const {filmName, posterImage, videoLink} = filmByIdResult;
 
   return <article className="small-movie-card catalog__movies-card">
     <div className="small-movie-card__image">
       <Link to = {to} >
-        <VideoPlayer filmName={filmName} posterImage={posterImage}/>
+        <VideoPlayer videoLink={videoLink} posterImage={posterImage}/>
       </Link>
     </div>
     <h3 className="small-movie-card__title">
