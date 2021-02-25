@@ -1,26 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const VideoPlayer = ({videoLink, posterImage}) => {
-  const [isMouseOver, setMouseOver] = useState(false);
-
-  const videoRef = useRef();
-
-  const eventHandlerFocus = () => {
-
-    videoRef.current.play();
-    console.log(`i was there`)
-  }
+const VideoPlayer = ({videoLink, posterImage, isActive}) => {
   return (
-    <>
-      <video ref={videoRef} onMouseOver={eventHandlerFocus} src={videoLink} poster={posterImage}></video>
-    </>
+    isActive ? <video src={videoLink} autoPlay /> : <img src={posterImage} />
   );
 };
 
 VideoPlayer.propTypes = {
   videoLink: PropTypes.string,
-  posterImage: PropTypes.string
+  posterImage: PropTypes.string,
+  isActive: PropTypes.bool
 };
 
 export default VideoPlayer;

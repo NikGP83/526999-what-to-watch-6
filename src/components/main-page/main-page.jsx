@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import FilmItem from '../film-item/film-item';
 import PropTypes from 'prop-types';
-// import {getFilmById} from '../mocks/films.js';
 import {Link} from 'react-router-dom';
 
 
 const MainPage = (props) => {
   const {filmIds} = props;
+  const [isActive, setActive] = useState(false);
+
+
+  const eventHandlerEnter = () => {
+    console.log(`in`)
+  };
+
+  const eventHandlerLeave = () => {
+    console.log(`out`)
+  };
+
   return (
     <>
       <section className="movie-card">
@@ -105,7 +115,9 @@ const MainPage = (props) => {
 
           <div className="catalog__movies-list">
             {filmIds.map((id) => {
-              return <FilmItem to={`/films/${id}`} key={id} id ={id}/>;
+              return <article className="small-movie-card catalog__movies-card" onMouseEnter={eventHandlerEnter} onMouseLeave={eventHandlerLeave} key={id}>
+                <FilmItem to={`/films/${id}`} key={id} id={id} />
+              </article>;
             })
             }
           </div>
