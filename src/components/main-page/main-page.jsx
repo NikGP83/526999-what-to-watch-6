@@ -8,13 +8,16 @@ const MainPage = (props) => {
   const {filmIds} = props;
   const [isActive, setActive] = useState(false);
 
+  let timer = null;
+
 
   const eventHandlerEnter = () => {
-    console.log(`in`)
+    timer = setTimeout(() => (
+      console.log(`time`)), 4000);
   };
 
   const eventHandlerLeave = () => {
-    console.log(`out`)
+    clearTimeout(timer);
   };
 
   return (
