@@ -1,23 +1,23 @@
-import React, {useState, useEffect} from 'react';
-import FilmItem from '../film-item/film-item';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import MovieList from '../movie-list/movie-list';
 
-
-const MainPage = (props) => {
-  const {filmIds} = props;
+const MainPage = () => {
   const [isActive, setActive] = useState(false);
-
-  let timer = null;
-
+//startingCount это пропс, стейт currentCount useState(startingCount)
+  let previewVideoTimer = null;
+  let swith = false
 
   const eventHandlerEnter = () => {
-    timer = setTimeout(() => (
-      console.log(`time`)), 4000);
+    previewVideoTimer = setTimeout(() => {swith = true; console.log(swith)}, 4000);
+
   };
 
+
   const eventHandlerLeave = () => {
-    clearTimeout(timer);
+    console.log(`out`)
+    clearTimeout(previewVideoTimer);
   };
 
   return (
@@ -116,18 +116,8 @@ const MainPage = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {filmIds.map((id) => {
-              return <article className="small-movie-card catalog__movies-card" onMouseEnter={eventHandlerEnter} onMouseLeave={eventHandlerLeave} key={id}>
-                <FilmItem to={`/films/${id}`} key={id} id={id} />
-              </article>;
-            })
-            }
-          </div>
+          <MovieList/>
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
         </section>
 
         <footer className="page-footer">
