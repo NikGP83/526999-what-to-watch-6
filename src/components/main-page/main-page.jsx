@@ -6,7 +6,6 @@ import {getFilmIds} from '../../mocks/films';
 
 const MainPage = () => {
   const filmIds = getFilmIds();
-  // const initialCount = 8;
   return (
     <>
       <section className="movie-card">

@@ -5,7 +5,7 @@ import {getFilmById} from '../../mocks/films';
 import VideoPlayer from '../player/video-player';
 
 const FilmItem = (props) => {
-  const {id, to, isActive, eventEnterHandler, eventLeaveHandler} = props;
+  const {id, to, eventEnterHandler, eventLeaveHandler, activeMovieId} = props;
 
   const filmByIdResult = getFilmById(id);
   if (typeof filmByIdResult === `undefined`) {
@@ -17,7 +17,7 @@ const FilmItem = (props) => {
     <article onMouseEnter={eventEnterHandler} onMouseLeave={eventLeaveHandler} className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
         <Link to={to} >
-          <VideoPlayer videoLink={videoLink} posterImage={posterImage} isActive={isActive} />
+          <VideoPlayer videoLink={videoLink} posterImage={posterImage} activeMovieId={activeMovieId}/>
         </Link>
       </div>
       <h3 className="small-movie-card__title">
