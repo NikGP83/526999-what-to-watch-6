@@ -24,7 +24,6 @@ const FilmItem = (props) => {
         <Link className="small-movie-card__link" to={to}>{filmName}</Link>
       </h3>
     </article>
-
   );
 };
 FilmItem.propTypes = FilmItemProps;
