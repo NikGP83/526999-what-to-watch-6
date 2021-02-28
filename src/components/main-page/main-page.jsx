@@ -1,12 +1,11 @@
 import React from 'react';
-import FilmItem from './film-item';
 import PropTypes from 'prop-types';
-// import {getFilmById} from '../mocks/films.js';
 import {Link} from 'react-router-dom';
+import MovieList from '../movie-list/movie-list';
+import {getFilmIds} from '../../mocks/films';
 
-
-const MainPage = (props) => {
-  const {filmIds} = props;
+const MainPage = () => {
+  const filmIds = getFilmIds();
   return (
     <>
       <section className="movie-card">
@@ -103,16 +102,8 @@ const MainPage = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {filmIds.map((id) => {
-              return <FilmItem to={`/films/${id}`} key={id} id ={id}/>;
-            })
-            }
-          </div>
+          <MovieList initialCount={8} filmIds={filmIds}/>
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
         </section>
 
         <footer className="page-footer">

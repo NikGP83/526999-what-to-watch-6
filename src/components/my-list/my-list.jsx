@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import FilmItem from './film-item';
+import FilmItem from '../film-item/film-item';
 
 const MyList = (props) => {
   const {filmIds, filmById} = props;
