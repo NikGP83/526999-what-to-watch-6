@@ -1,25 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MovieList from '../movie-list/movie-list';
+import {getFilmIds} from '../../mocks/films';
 
 const MainPage = () => {
-  const [isActive, setActive] = useState(false);
-//startingCount это пропс, стейт currentCount useState(startingCount)
-  let previewVideoTimer = null;
-  let swith = false
-
-  const eventHandlerEnter = () => {
-    previewVideoTimer = setTimeout(() => {swith = true; console.log(swith)}, 4000);
-
-  };
-
-
-  const eventHandlerLeave = () => {
-    console.log(`out`)
-    clearTimeout(previewVideoTimer);
-  };
-
+  const filmIds = getFilmIds();
+  // const initialCount = 8;
   return (
     <>
       <section className="movie-card">
@@ -116,7 +103,7 @@ const MainPage = () => {
             </li>
           </ul>
 
-          <MovieList/>
+          <MovieList initialCount={8} filmIds={filmIds}/>
 
         </section>
 

@@ -5,16 +5,16 @@ import {getFilmById} from '../../mocks/films';
 import VideoPlayer from '../player/video-player';
 
 const FilmItem = (props) => {
-  const {id, to} = props;
+  const {id, to, isActive, eventEnterHandler, eventLeaveHandler} = props;
 
   const filmByIdResult = getFilmById(id);
   if (typeof filmByIdResult === `undefined`) {
     window.location.reload();
   }
-  const {filmName, posterImage, videoLink, isActive} = filmByIdResult;
-  console.log(isActive)
+  const {filmName, posterImage, videoLink} = filmByIdResult;
+
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article onMouseEnter={eventEnterHandler} onMouseLeave={eventLeaveHandler} className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
         <Link to={to} >
           <VideoPlayer videoLink={videoLink} posterImage={posterImage} isActive={isActive} />
