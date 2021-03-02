@@ -1,6 +1,7 @@
 const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const filmsPoster = [`img/the-grand-budapest-hotel-poster.jpg`, `img/macbeth.jpg`, `img/aviator.jpg`];
+const filmGenre = [`comedy`, `drama`, `action`, `fantasy`];
 
 const mocDataFilms = [];
 
@@ -20,7 +21,7 @@ for (let i = 0; i < 8; i++) {
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: 99,
-    genre: `Comedy`,
+    genre: filmGenre[getRandom(0, filmGenre.length - 1)],
     released: 2014,
     isFavorite: false
   });
