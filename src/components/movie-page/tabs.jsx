@@ -10,13 +10,13 @@ const Tabs = ({children}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
-        <li onClick={movieNavListHandler}  className="movie-nav__item">
+        <li onClick={movieNavListHandler} className={activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
           <a href="#" className="movie-nav__link">Overview</a>
         </li>
-        <li onClick={movieNavListHandler} className="movie-nav__item movie-nav__item--active">
+        <li onClick={movieNavListHandler} className={activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
           <a href="#" className="movie-nav__link">Details</a>
         </li>
-        <li onClick={movieNavListHandler} className="movie-nav__item">
+        <li onClick={movieNavListHandler} className={activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
           <a href="#" className="movie-nav__link">Reviews</a>
         </li>
       </ul>

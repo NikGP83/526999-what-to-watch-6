@@ -35,3 +35,7 @@ export const getFilmById = (id) => {
   return mocDataFilms.find((el) => el.id === id);
 };
 
+// export const filterByGenre = (genre) => {
+//   return mocDataFilms.reduce((a, film) => )
+// };
+

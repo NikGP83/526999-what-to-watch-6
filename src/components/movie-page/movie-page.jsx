@@ -2,10 +2,13 @@ import React from 'react';
 import {Link, Redirect, useParams} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Tabs from './tabs';
+import {filterByGenre} from '../../mocks/films';
 
 const MoviePage = (props) => {
   const {id} = useParams();
   const {filmById} = props;
+  const myArr = filterByGenre();
+  console.log(myArr)
   const searchResult = (filmById(Number(id)));
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
@@ -73,6 +76,7 @@ const MoviePage = (props) => {
             </div>
 
             <div className="movie-card__desc">
+              <Tabs/>
             </div>
           </div>
         </div>
