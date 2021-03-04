@@ -5,6 +5,7 @@ const filmGenre = [`comedy`, `drama`, `action`, `fantasy`];
 
 const mocDataFilms = [];
 
+
 for (let i = 0; i < 8; i++) {
   mocDataFilms.push({
     id: i,
@@ -22,7 +23,7 @@ for (let i = 0; i < 8; i++) {
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: 99,
     genre: filmGenre[getRandom(0, filmGenre.length - 1)],
-    released: 2014,
+    released: `2014`,
     isFavorite: false
   });
 }

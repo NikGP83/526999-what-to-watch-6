@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MoviePageInList = (props) => {
   const {raiting} = props;
@@ -23,6 +24,10 @@ const MoviePageInList = (props) => {
       </div>
     </>
   );
+};
+
+MoviePageInList.propTypes = {
+  raiting: PropTypes.num,
 };
 
 export default MoviePageInList;

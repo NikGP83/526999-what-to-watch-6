@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import MoviePageReviews from './movie-page-reviews';
-import MoviePageDetails from './movie-page-details';
-import {useParams, Redirect, Link} from 'react-router-dom';
+import React from 'react';
+import {useParams, Link} from 'react-router-dom';
 
 
 const Tabs = () => {

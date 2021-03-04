@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Tabs from './tabs';
 import MoviePageDetails from './movie-page-details';
 import MoviePageReviews from './movie-page-reviews';
+import MoviePageInList from './movie-page-in-list';
 
 const selector = (tab) => {
   switch (tab) {
@@ -12,7 +13,7 @@ const selector = (tab) => {
     case `reviews`:
       return MoviePageReviews;
     default:
-      return MoviePageDetails;
+      return MoviePageInList;
   }
 };
 const MoviePage = (props) => {
@@ -24,7 +25,7 @@ const MoviePage = (props) => {
   }
 
   const Content = selector(tab);
-  const {previewImage, filmName, genre, released, scoresCount, rating} = searchResult;
+  const {previewImage, filmName, genre, released} = searchResult;
   return (
     <>
       <section className="movie-card movie-card--full">
