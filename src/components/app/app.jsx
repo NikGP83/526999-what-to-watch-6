@@ -22,7 +22,7 @@ const App = (props) => {
         <Route exact path="/films/">
           <MoviePage />
         </Route>
-        <Route exact path="/films/:id?">
+        <Route exact path="/films/:id/:tab?">
           <MoviePage {...props}/>
         </Route>
         <Route exact path="/my-list">
