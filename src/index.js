@@ -17,7 +17,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-      <App filmById = {filmById}/>,
+      <App filmById = {filmById} />,
     </Provider>,
     document.querySelector(`#root`)
 );
