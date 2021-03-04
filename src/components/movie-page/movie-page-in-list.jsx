@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MoviePageInList = (props) => {
-  const {raiting, ratingDescr, scoresCount, description, director, starring} = props;
+const MoviePageInList = (searchResult) => {
+  const {raiting, ratingDescr, scoresCount, description, director, starring} = searchResult;
   return (
     <>
       <div className="movie-rating">

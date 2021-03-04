@@ -2,7 +2,7 @@ const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + mi
 
 const filmsPoster = [`img/the-grand-budapest-hotel-poster.jpg`, `img/macbeth.jpg`, `img/aviator.jpg`];
 const filmGenre = [`comedy`, `drama`, `action`, `fantasy`];
-const ratingDescription = [`Bad`, `Normal`, `Good`, `Very` `good`, `Awesome`];
+const ratingDescription = [`Bad`, `Normal`, `Good`, `Very`, `good`, `Awesome`];
 
 const mocDataFilms = [];
 
@@ -30,7 +30,7 @@ for (let i = 0; i < 8; i++) {
   });
 }
 
-const commentsData = [{
+export const commentsData = [{
   id: 1,
   user: {
     id: Math.random(),
