@@ -5,6 +5,8 @@ import Tabs from './tabs';
 import MoviePageDetails from './movie-page-details';
 import MoviePageReviews from './movie-page-reviews';
 import MoviePageInList from './movie-page-in-list';
+import { useSelector } from 'react-redux';
+
 
 const selector = (tab) => {
   switch (tab) {
@@ -16,10 +18,9 @@ const selector = (tab) => {
       return MoviePageInList;
   }
 };
-const MoviePage = (props) => {
+const MoviePage = () => {
   const {id, tab} = useParams();
-  const {filmById} = props;
-  const searchResult = (filmById(Number(id)));
+  const searchResult = (useSelector((state) => state.films.find((el) => el.id === Number(id))));
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }

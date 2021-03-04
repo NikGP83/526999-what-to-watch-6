@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {FilmItemProps} from './film-item-props';
-import {getFilmById} from '../../mocks/films';
 import VideoPlayer from '../player/video-player';
+import { useSelector } from 'react-redux';
 
 const FilmItem = (props) => {
   const {id, to, eventEnterHandler, eventLeaveHandler, activeMovieId} = props;
 
-  const filmByIdResult = getFilmById(id);
+  const filmByIdResult = (useSelector((state) => state.films.find((el) => el.id === Number(id))));
   if (typeof filmByIdResult === `undefined`) {
     window.location.reload();
   }

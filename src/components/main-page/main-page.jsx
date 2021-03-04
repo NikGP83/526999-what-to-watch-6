@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MovieList from '../movie-list/movie-list';
-import {getFilmIds} from '../../mocks/films';
+import {shallowEqual, useSelector} from 'react-redux';
 
 const MainPage = () => {
-  const filmIds = getFilmIds();
+  const filmIds = useSelector((state) => state.films.map((el) => el.id), shallowEqual);
   return (
     <>
       <section className="movie-card">
