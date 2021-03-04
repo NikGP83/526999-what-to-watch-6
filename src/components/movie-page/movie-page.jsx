@@ -2,17 +2,28 @@ import React from 'react';
 import {Link, Redirect, useParams} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Tabs from './tabs';
-import {filterByGenre} from '../../mocks/films';
+import MoviePageDetails from './movie-page-details';
+import MoviePageReviews from './movie-page-reviews';
 
+const selector = (tab) => {
+  switch (tab) {
+    case `details`:
+      return MoviePageDetails;
+    case `reviews`:
+      return MoviePageReviews;
+    default:
+      return MoviePageDetails;
+  }
+};
 const MoviePage = (props) => {
-  const {id} = useParams();
+  const {id, tab} = useParams();
   const {filmById} = props;
-  const myArr = filterByGenre();
-  console.log(myArr)
   const searchResult = (filmById(Number(id)));
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }
+
+  const Content = selector(tab);
   const {previewImage, filmName, genre, released, scoresCount, rating} = searchResult;
   return (
     <>
@@ -77,6 +88,7 @@ const MoviePage = (props) => {
 
             <div className="movie-card__desc">
               <Tabs/>
+              <Content {...searchResult}/>
             </div>
           </div>
         </div>

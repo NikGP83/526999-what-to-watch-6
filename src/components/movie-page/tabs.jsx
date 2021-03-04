@@ -1,26 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import MoviePageReviews from './movie-page-reviews';
+import MoviePageDetails from './movie-page-details';
+import {useParams, Redirect, Link} from 'react-router-dom';
 
-const Tabs = ({children}) => {
-  const [activeTab, setTab] = useState(null);
-  const movieNavListHandler = (evt, newValue) => {
-    console.log(evt.className)
-  }
+
+const Tabs = () => {
+  const {id, tab} = useParams();
 
   return (
-    <nav className="movie-nav movie-card__nav">
-      <ul className="movie-nav__list">
-        <li onClick={movieNavListHandler} className={activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
-          <a href="#" className="movie-nav__link">Overview</a>
-        </li>
-        <li onClick={movieNavListHandler} className={activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
-          <a href="#" className="movie-nav__link">Details</a>
-        </li>
-        <li onClick={movieNavListHandler} className={activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
-          <a href="#" className="movie-nav__link">Reviews</a>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <nav className="movie-nav movie-card__nav">
+        <ul className="movie-nav__list">
+          <li className={typeof tab === `string` && tab.toLowerCase() === `overview` ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
+            <Link to={`/films/${id}`} className="movie-nav__link">Overview</Link>
+          </li>
+          <li className={typeof tab === `string` && tab.toLowerCase() === `details` ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
+            <Link to={`/films/${id}/details`} className="movie-nav__link">Details</Link>
+          </li>
+          <li className={typeof tab === `string` && tab.toLowerCase() === `reviews` ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
+            <Link to={`/films/${id}/reviews`} className="movie-nav__link">Reviews</Link>
+          </li>
+        </ul>
+      </nav>
+    </>
   );
 };
 
