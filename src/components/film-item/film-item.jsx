@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {FilmItemProps} from './film-item-props';
 import VideoPlayer from '../player/video-player';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 const FilmItem = (props) => {
   const {id, to, eventEnterHandler, eventLeaveHandler, activeMovieId} = props;

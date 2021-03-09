@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import MainPage from '../main-page/main-page';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
@@ -34,6 +34,9 @@ const App = () => {
           <Route exact path="/">
             <MainPage />
           </Route>
+          <Route exact path="/catalog/:genre">
+            <MainPage />
+          </Route>
           <Route exact path="/login">
             <SignIn />
           </Route>
@@ -62,7 +65,7 @@ const App = () => {
       </BrowserRouter>
     );
   }
-  return <div>Работаем</div>;
+  return <h2>Работаем</h2>;
 
 };
 App.propTypes = {

@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MoviePageInList = (searchResult) => {
-  const {raiting, ratingDescr, scoresCount, description, director, starring} = searchResult;
+  const {rating, ratingDescr, scoresCount, description, director, starring} = searchResult;
   return (
     <>
       <div className="movie-rating">
-        <div className="movie-rating__score">{raiting}</div>
+        <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{ratingDescr}</span>
           <span className="movie-rating__count">{scoresCount} ratings</span>
@@ -25,9 +25,9 @@ const MoviePageInList = (searchResult) => {
 };
 
 MoviePageInList.propTypes = {
-  raiting: PropTypes.num,
+  rating: PropTypes.number,
   ratingDescr: PropTypes.string,
-  scoresCount: PropTypes.num,
+  scoresCount: PropTypes.number,
   description: PropTypes.string,
   director: PropTypes.string,
   starring: PropTypes.array,

@@ -5,7 +5,7 @@ import Tabs from './tabs';
 import MoviePageDetails from './movie-page-details';
 import MoviePageReviews from './movie-page-reviews';
 import MoviePageInList from './movie-page-in-list';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 
 const selector = (tab) => {
