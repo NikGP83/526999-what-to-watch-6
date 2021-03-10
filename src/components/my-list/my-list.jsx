@@ -2,9 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FilmItem from '../film-item/film-item';
+import {getFilmIds, getFilmById} from '../../mocks/films';
 
-const MyList = (props) => {
-  const {filmIds, filmById} = props;
+
+const MyList = () => {
+  const filmIds = getFilmIds();
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -29,7 +31,7 @@ const MyList = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__movies-list">
-          {filmIds.map((id) => (<FilmItem to={`/films/${id}`} key={id} {...filmById(id)} />))}
+          {filmIds.map((id) => (<FilmItem to={`/films/${id}`} key={id} {...getFilmById(id)} />))}
         </div>
       </section>
 

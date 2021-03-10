@@ -10,7 +10,7 @@ const MovieList = (props) => {
 
   let previewVideoTimer = null;
   const buttonShowMoreClick = () => {
-    setFilmCount((currentFilmCount) => currentFilmCount + 4);
+    setFilmCount((currentFilmCount) => currentFilmCount + 8);
   };
 
   const eventEnterHandler = (id) => {
@@ -32,9 +32,9 @@ const MovieList = (props) => {
         }
       </div>
 
-      <div className="catalog__more">
+      { filmIds.length > filmCount ? (<div className="catalog__more">
         <button onClick={buttonShowMoreClick} className="catalog__button" type="button">Show more</button>
-      </div>
+      </div>) : null}
     </>
   );
 };
