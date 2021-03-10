@@ -1,14 +1,8 @@
 import React from 'react';
 import {shallowEqual, useSelector} from 'react-redux';
 import {Link, useParams} from 'react-router-dom';
-import {saveGenre} from '../../api/utils';
-
-const MAX_GENRES_COUNT = 8;
-
-
-const getGenres = (allFilms) => {
-  return [...new Set(allFilms.map((film) => film.genre))].slice(0, MAX_GENRES_COUNT);
-};
+import {makeUriSafeString} from '../../utils';
+import {getGenres} from '../../utils';
 
 const GenreList = () => {
   const {genre: currentGenre} = useParams();
@@ -19,8 +13,8 @@ const GenreList = () => {
       <li className={`catalog__genres-item ${!currentGenre ? `catalog__genres-item--active` : ``}`}>
         <Link to="/" className="catalog__genres-link">All genres</Link>
       </li>
-      {genres.map((genre) => <li key={genre} className={`catalog__genres-item ${saveGenre(genre) === currentGenre ? `catalog__genres-item--active` : ``}`}>
-        <Link to={`/catalog/${saveGenre(genre)}`} className="catalog__genres-link">{genre}</Link>
+      {genres.map((genre) => <li key={genre} className={`catalog__genres-item ${makeUriSafeString(genre) === currentGenre ? `catalog__genres-item--active` : ``}`}>
+        <Link to={`/catalog/${makeUriSafeString(genre)}`} className="catalog__genres-link">{genre}</Link>
       </li>)}
     </ul>
   );

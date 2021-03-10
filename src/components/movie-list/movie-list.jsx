@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import FilmItem from '../film-item/film-item';
+import {MAX_MOVIE_LIST_FILM_STEP} from '../../const';
 
 
 const MovieList = (props) => {
@@ -10,7 +11,7 @@ const MovieList = (props) => {
 
   let previewVideoTimer = null;
   const buttonShowMoreClick = () => {
-    setFilmCount((currentFilmCount) => currentFilmCount + 8);
+    setFilmCount((currentFilmCount) => currentFilmCount + MAX_MOVIE_LIST_FILM_STEP);
   };
 
   const eventEnterHandler = (id) => {

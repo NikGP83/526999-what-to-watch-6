@@ -20,7 +20,8 @@ const selector = (tab) => {
 };
 const MoviePage = () => {
   const {id, tab} = useParams();
-  const searchResult = (useSelector((state) => state.films.find((el) => el.id === Number(id))));
+  const iid = Number(id);
+  const searchResult = (useSelector((state) => state.films.find((el) => el.id === iid)));
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }
