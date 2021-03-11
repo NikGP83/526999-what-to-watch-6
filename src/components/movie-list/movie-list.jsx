@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import FilmItem from '../film-item/film-item';
+import ShowMore from './show-more';
 import {MAX_MOVIE_LIST_FILM_STEP} from '../../const';
 
 
@@ -33,9 +34,7 @@ const MovieList = (props) => {
         }
       </div>
 
-      { filmIds.length > filmCount ? (<div className="catalog__more">
-        <button onClick={buttonShowMoreClick} className="catalog__button" type="button">Show more</button>
-      </div>) : null}
+      { filmIds.length > filmCount ? (<ShowMore buttonShowMoreClick={buttonShowMoreClick}/>) : null}
     </>
   );
 };
