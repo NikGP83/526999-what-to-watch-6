@@ -4,11 +4,11 @@ import {Link, useParams} from 'react-router-dom';
 import MovieList from '../movie-list/movie-list';
 import GenreList from '../genre-list/genre-list';
 import {shallowEqual, useSelector} from 'react-redux';
-import {saveGenre} from '../../api/utils';
+import {makeUriSafeString} from '../../utils';
 
 const MainPage = () => {
   const {genre} = useParams();
-  const filmIds = useSelector((state) => state.films.filter((film) => saveGenre(film.genre) === genre || !genre).map((el) => el.id), shallowEqual);
+  const filmIds = useSelector((state) => state.films.filter((film) => makeUriSafeString(film.genre) === genre || !genre).map((el) => el.id), shallowEqual);
   return (
     <>
       <section className="movie-card">
