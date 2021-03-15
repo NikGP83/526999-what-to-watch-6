@@ -1,4 +1,4 @@
-import {LOAD_FILM_LIST} from "./action";
+import {ActionType} from "./action";
 
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_FILM_LIST:
+    case ActionType.LOAD_FILM_LIST:
       return {
         ...state, films: action.payload
       };
