@@ -5,4 +5,8 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `<h2> Необходима авторизация</h2>`,
 };
 
-export const loadFilmList = (payload) => ({type: ActionType.LOAD_FILM_LIST, payload});
+
+export const ActionCreater = {
+  loadFilmList: (payload) => ({type: ActionType.LOAD_FILM_LIST, payload}),
+  requireAuthorization: (status) => ({type: ActionType.REQUIRED_AUTHORIZATION, payload: status}),
+};

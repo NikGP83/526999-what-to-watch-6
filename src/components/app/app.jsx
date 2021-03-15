@@ -9,7 +9,7 @@ import Player from '../player/player';
 import MoviePage from '../movie-page/movie-page';
 import {useDispatch, useSelector} from 'react-redux';
 import {loadFilms} from '../../api/load-films';
-import {loadFilmList} from '../../store/action';
+import {ActionCreater} from '../../store/action';
 
 const App = () => {
   const hasFilm = useSelector((state) => state.films.length > 0);
@@ -23,7 +23,7 @@ const App = () => {
       if (typeof films === `undefined`) {
         return;
       }
-      dispatch(loadFilmList(films));
+      dispatch(ActionCreater.loadFilmList(films));
     });
   }, [hasFilm]);
 
