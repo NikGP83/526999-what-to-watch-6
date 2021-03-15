@@ -1,6 +1,4 @@
-import {
-  BASE_URL
-} from './api-settings';
+import {BASE_URL} from './api-settings';
 import axios from 'axios';
 
 export const loadFilms = async () => {
