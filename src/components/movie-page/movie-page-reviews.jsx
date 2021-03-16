@@ -1,8 +1,8 @@
 import React from 'react';
-import {commentsData} from '../../mocks/films';
 
-const MoviePageReviews = () => {
-  const [{comment, rating, date, user}] = commentsData;
+
+const MoviePageReviews = (searchResult) => {
+  const [{comment, rating, date, user}] = searchResult;
   return (
 
     <div className="movie-card__reviews movie-card__row">
