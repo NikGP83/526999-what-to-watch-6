@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 const Player = () => {
   const {id} = useParams();
-  // const {videoLink, posterImage} = getFilmById(Number(id));
   const iid = Number(id);
   const searchResult = (useSelector((state) => state.films.find((el) => el.id === iid)));
   const {videoLink, posterImage} = searchResult;
