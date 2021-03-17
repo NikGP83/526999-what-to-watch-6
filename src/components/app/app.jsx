@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import MainPage from '../main-page/main-page';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
@@ -7,25 +7,40 @@ import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import Player from '../player/player';
 import MoviePage from '../movie-page/movie-page';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {loadFilms} from '../../api/load-films';
-import {ActionCreater} from '../../store/action';
+import {ActionCreator} from '../../store/action';
+import {AuthorizationStatus, PRELOADER} from '../../const';
+import {useFilmLoaded} from '../../store/use-film-loaded';
+import {checkAuth} from '../../api/api-actions';
+import {useAuthorize} from '../../store/use-authorize';
 
 const App = () => {
-  const hasFilm = useSelector((state) => state.films.length > 0);
+  const [filmListRequested, setFilmListRequested] = useState(false);
+  const [autoRizeRequested, setAutoRizeRequested] = useState(false);
+  const hasFilm = useFilmLoaded();
+  const currentStatus = useAuthorize();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (hasFilm) {
+    if (hasFilm || filmListRequested) {
       return;
     }
-
+    setFilmListRequested(true);
     loadFilms().then((films) => {
       if (typeof films === `undefined`) {
         return;
       }
-      dispatch(ActionCreater.loadFilmList(films));
+      dispatch(ActionCreator.loadFilmList(films));
     });
-  }, [hasFilm]);
+  }, [hasFilm, filmListRequested]);
+
+  useEffect(() => {
+    if (autoRizeRequested || currentStatus !== AuthorizationStatus.UNKNOWN) {
+      return;
+    }
+    setAutoRizeRequested(true);
+    dispatch(checkAuth());
+  });
 
   if (hasFilm) {
     return (
@@ -65,7 +80,7 @@ const App = () => {
       </BrowserRouter>
     );
   }
-  return <h2>Работаем</h2>;
+  return <img src={PRELOADER} />;
 
 };
 App.propTypes = {

@@ -1,11 +1,8 @@
 import {ActionType} from "./action";
-import {AuthorizationStatus} from '../const';
-
 
 const initialState = {
   films: [],
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
-  isDataLoaded: false,
+  authInfo: {},
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,12 +11,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         films: action.payload,
-        isDataLoaded: true,
       };
-    case ActionType.REQUIRED_AUTHORIZATION:
+    case ActionType.AUTHORIZATION_CHANGED:
       return {
-        ...state, authorizationStatus: action.payload,
+        ...state, authInfo: action.payload,
       };
+
 
     default:
       return state;
