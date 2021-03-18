@@ -1,15 +1,20 @@
-import {LOAD_FILM_LIST} from "./action";
-
+import {ActionType} from "./action";
 
 const initialState = {
   films: [],
+  authInfo: {},
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_FILM_LIST:
+    case ActionType.LOAD_FILM_LIST:
       return {
-        ...state, films: action.payload
+        ...state,
+        films: action.payload,
+      };
+    case ActionType.AUTHORIZATION_CHANGED:
+      return {
+        ...state, authInfo: action.payload,
       };
 
 

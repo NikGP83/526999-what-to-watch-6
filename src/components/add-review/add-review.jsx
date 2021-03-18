@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, useParams, Redirect} from 'react-router-dom';
-import {getFilmById} from '../../mocks/films';
+import {useSelector} from 'react-redux';
 
 const AddReview = () => {
   const {id} = useParams();
-  const searchResult = (getFilmById(Number(id)));
+  const iid = Number(id);
+  const searchResult = (useSelector((state) => state.films.find((el) => el.id === iid)));
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }

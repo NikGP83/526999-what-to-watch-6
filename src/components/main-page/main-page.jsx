@@ -6,9 +6,12 @@ import GenreList from '../genre-list/genre-list';
 import {shallowEqual, useSelector} from 'react-redux';
 import {makeUriSafeString} from '../../utils';
 
+
 const MainPage = () => {
   const {genre} = useParams();
   const filmIds = useSelector((state) => state.films.filter((film) => makeUriSafeString(film.genre) === genre || !genre).map((el) => el.id), shallowEqual);
+
+
   return (
     <>
       <section className="movie-card">
@@ -73,7 +76,7 @@ const MainPage = () => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreList/>
-
+          {/* {!isDataLoaded ? <img src={PRELOADER}/> : null} */}
           <MovieList initialCount={8} filmIds={filmIds}/>
 
         </section>

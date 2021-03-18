@@ -1,5 +1,6 @@
 import React from 'react';
-import {commentsData} from '../../mocks/films';
+import {commentsData} from '../mocks/mock';
+
 
 const MoviePageReviews = () => {
   const [{comment, rating, date, user}] = commentsData;

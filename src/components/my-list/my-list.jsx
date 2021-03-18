@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FilmItem from '../film-item/film-item';
-import {getFilmIds, getFilmById} from '../../mocks/films';
+import {getFilmIds, getFilmById} from '../mocks/mock';
 
 
 const MyList = () => {
