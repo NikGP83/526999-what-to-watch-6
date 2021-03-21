@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import MainPage from '../main-page/main-page';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
@@ -10,37 +10,37 @@ import MoviePage from '../movie-page/movie-page';
 import {useDispatch} from 'react-redux';
 import {loadFilms} from '../../api/load-films';
 import {ActionCreator} from '../../store/action';
-import {AuthorizationStatus, PRELOADER} from '../../const';
+import {PRELOADER} from '../../const';
 import {useFilmLoaded} from '../../store/use-film-loaded';
-import {checkAuth} from '../../api/api-actions';
-import {useAuthorize} from '../../store/use-authorize';
+// import {checkAuth} from '../../api/api-actions';
+// import {useAuthorize} from '../../store/use-authorize';
 
 const App = () => {
-  const [filmListRequested, setFilmListRequested] = useState(false);
-  const [autoRizeRequested, setAutoRizeRequested] = useState(false);
+  // const [filmListRequested, setFilmListRequested] = useState(false);
+  // const [autoRizeRequested, setAutoRizeRequested] = useState(false);
   const hasFilm = useFilmLoaded();
-  const currentStatus = useAuthorize();
+  // const currentStatus = useAuthorize();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (hasFilm || filmListRequested) {
+    if (hasFilm) {
       return;
     }
-    setFilmListRequested(true);
+
     loadFilms().then((films) => {
       if (typeof films === `undefined`) {
         return;
       }
       dispatch(ActionCreator.loadFilmList(films));
     });
-  }, [hasFilm, filmListRequested]);
+  }, [hasFilm]);
 
-  useEffect(() => {
-    if (autoRizeRequested || currentStatus !== AuthorizationStatus.UNKNOWN) {
-      return;
-    }
-    setAutoRizeRequested(true);
-    dispatch(checkAuth());
-  });
+  // useEffect(() => {
+  //   if (autoRizeRequested || currentStatus !== AuthorizationStatus.UNKNOWN) {
+  //     return;
+  //   }
+  //   setAutoRizeRequested(true);
+  //   dispatch(checkAuth());
+  // });
 
   if (hasFilm) {
     return (

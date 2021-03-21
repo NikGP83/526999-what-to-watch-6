@@ -1,8 +1,10 @@
+import {AuthorizationStatus} from "../const";
 import {ActionType} from "./action";
 
 const initialState = {
   films: [],
   authInfo: {},
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -12,9 +14,9 @@ export const reducer = (state = initialState, action) => {
         ...state,
         films: action.payload,
       };
-    case ActionType.AUTHORIZATION_CHANGED:
+    case ActionType.REQUIRED_AUTHORIZATION:
       return {
-        ...state, authInfo: action.payload,
+        ...state, authorizationStatus: action.payload,
       };
 
 

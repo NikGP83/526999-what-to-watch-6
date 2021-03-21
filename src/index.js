@@ -12,7 +12,7 @@ import {checkAuth} from './api/api-actions';
 import {ActionCreator} from './store/action';
 
 const api = createAPI(
-    () => store.dispatch(ActionCreator.authorizationChanged(AuthorizationStatus.NO_AUTH))
+    () => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
 
 const store = createStore(
@@ -22,7 +22,7 @@ const store = createStore(
     )
 );
 
-store.dispatch(checkAuth());
+// store.dispatch(checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
