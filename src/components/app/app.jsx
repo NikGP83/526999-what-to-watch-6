@@ -12,6 +12,7 @@ import {loadFilms} from '../../api/load-films';
 import {ActionCreator} from '../../store/action';
 import {PRELOADER} from '../../const';
 import {useFilmLoaded} from '../../store/use-film-loaded';
+import SingIn from '../sign-in/sign-in';
 // import {checkAuth} from '../../api/api-actions';
 // import {useAuthorize} from '../../store/use-authorize';
 
@@ -69,6 +70,9 @@ const App = () => {
           </Route>
           <Route exact path="/player/:id?">
             <Player />
+          </Route>
+          <Route exact path="/login">
+            <SingIn/>
           </Route>
           <Route exact path="/not-found">
             <h2>404 Not Found</h2>
