@@ -1,6 +1,24 @@
-import React from 'react';
+import React, {useRef} from 'react';
+import {useHistory} from 'react-router';
+import PropTypes from 'prop-types';
+import {useDispatch} from 'react-redux';
 
 const SingIn = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const loginRef = useRef();
+  const passwordRef = useRef();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    dispatch(login({
+      login: loginRef.current.value,
+      password: passwordRef.current.value,
+    }));
+  };
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -16,19 +34,19 @@ const SingIn = () => {
       </header>
 
       <div className="sign-in user-page__content">
-        <form action="#" className="sign-in__form">
+        <form onClick={handleSubmit} action="#" className="sign-in__form">
           <div className="sign-in__fields">
             <div className="sign-in__field">
-              <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
+              <input ref={loginRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
             <div className="sign-in__field">
-              <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" />
+              <input ref={passwordRef} className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
           </div>
           <div className="sign-in__submit">
-            <button className="sign-in__btn" type="submit">Sign in</button>
+            <button onClick={() => history.push(`/`)} className="sign-in__btn" type="submit">Sign in</button>
           </div>
         </form>
       </div>
@@ -48,6 +66,10 @@ const SingIn = () => {
       </footer>
     </div>
   );
+};
+
+SingIn.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SingIn;

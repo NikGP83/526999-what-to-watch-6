@@ -76,7 +76,6 @@ const MainPage = () => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreList/>
-          {/* {!isDataLoaded ? <img src={PRELOADER}/> : null} */}
           <MovieList initialCount={8} filmIds={filmIds}/>
 
         </section>
