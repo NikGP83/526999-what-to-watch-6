@@ -8,4 +8,13 @@ export const AuthorizationStatus = {
   UNKNOWN: `UNKNOWN`,
 };
 
+export const AppRoute = {
+  LOGIN: `/login`,
+  ROOT: `/`
+};
+
+export const APIRoute = {
+  LOGIN: `/login`,
+};
+
 
