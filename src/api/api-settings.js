@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { AuthorizationStatus } from '../const';
 
 export const BASE_URL = `https://6.react.pages.academy/wtw`;
 

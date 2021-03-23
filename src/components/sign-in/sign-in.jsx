@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
+import {login} from '../../api/api-actions';
 
 const SingIn = () => {
   const dispatch = useDispatch();
