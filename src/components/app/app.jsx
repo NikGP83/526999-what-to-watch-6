@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import MainPage from '../main-page/main-page';
 import PropTypes from 'prop-types';
-import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
+import {Switch, Route, BrowserRouter as BrowserRouter, Redirect} from 'react-router-dom';
 import SignIn from '../header/sign-in';
 import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
@@ -13,6 +13,7 @@ import {ActionCreator} from '../../store/action';
 import {PRELOADER} from '../../const';
 import {useFilmLoaded} from '../../store/use-film-loaded';
 import SingIn from '../sign-in/sign-in';
+import browserHistory from '../../browser-history';
 // import {checkAuth} from '../../api/api-actions';
 // import {useAuthorize} from '../../store/use-authorize';
 
@@ -45,7 +46,7 @@ const App = () => {
 
   if (hasFilm) {
     return (
-      <BrowserRouter>
+      <BrowserRouter history={browserHistory}>
         <Switch>
           <Route exact path="/">
             <MainPage />
