@@ -1,11 +1,9 @@
 import React, {useRef} from 'react';
-import {useHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 
 const SingIn = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const loginRef = useRef();
   const passwordRef = useRef();

@@ -14,14 +14,10 @@ import {PRELOADER} from '../../const';
 import {useFilmLoaded} from '../../store/use-film-loaded';
 import SingIn from '../sign-in/sign-in';
 import browserHistory from '../../browser-history';
-// import {checkAuth} from '../../api/api-actions';
-// import {useAuthorize} from '../../store/use-authorize';
 
 const App = () => {
-  // const [filmListRequested, setFilmListRequested] = useState(false);
-  // const [autoRizeRequested, setAutoRizeRequested] = useState(false);
+
   const hasFilm = useFilmLoaded();
-  // const currentStatus = useAuthorize();
   const dispatch = useDispatch();
   useEffect(() => {
     if (hasFilm) {
@@ -35,14 +31,6 @@ const App = () => {
       dispatch(ActionCreator.loadFilmList(films));
     });
   }, [hasFilm]);
-
-  // useEffect(() => {
-  //   if (autoRizeRequested || currentStatus !== AuthorizationStatus.UNKNOWN) {
-  //     return;
-  //   }
-  //   setAutoRizeRequested(true);
-  //   dispatch(checkAuth());
-  // });
 
   if (hasFilm) {
     return (
