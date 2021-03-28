@@ -1,5 +1,5 @@
 import {ActionCreator} from '../store/action';
-import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
+import {AuthorizationStatus, APIRoute} from '../const';
 
 
 export const checkAuth = () => (dispatch, _getState, api) => (
@@ -8,8 +8,8 @@ export const checkAuth = () => (dispatch, _getState, api) => (
   .catch(() => {})
 );
 
-export const login = () => ({login: email, password}) => (dispatch, _getState, api) => (
+export const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
   .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-  .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
+  .then((data) => dispatch(ActionCreator.loadUserProfile(data)))
 );

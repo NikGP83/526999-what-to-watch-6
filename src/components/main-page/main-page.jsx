@@ -5,11 +5,15 @@ import MovieList from '../movie-list/movie-list';
 import GenreList from '../genre-list/genre-list';
 import {shallowEqual, useSelector} from 'react-redux';
 import {makeUriSafeString} from '../../utils';
+import Header from '../header/header';
 
 
 const MainPage = () => {
   const {genre} = useParams();
   const filmIds = useSelector((state) => state.films.filter((film) => makeUriSafeString(film.genre) === genre || !genre).map((el) => el.id), shallowEqual);
+
+  const authorizationStatus = useSelector((state) => state.authorizationStatus)
+  console.log(authorizationStatus)
 
 
   return (
@@ -21,23 +25,7 @@ const MainPage = () => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <Link className="logo__link" to="/">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <Link to='/my-list'>
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </Link>
-            </div>
-          </div>
-        </header>
+        <Header/>
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">

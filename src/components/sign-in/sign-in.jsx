@@ -1,7 +1,10 @@
-import React, {useRef} from 'react';
-import PropTypes from 'prop-types';
-import {useDispatch} from 'react-redux';
-import {login} from '../../api/api-actions';
+import React, { useRef } from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { Redirect } from 'react-router';
+import { login } from '../../api/api-actions';
+import { AuthorizationStatus, AppRoute } from '../../const';
+import { redirect } from '../../store/redirect';
+
 
 const SingIn = () => {
   const dispatch = useDispatch();
@@ -13,10 +16,17 @@ const SingIn = () => {
     evt.preventDefault();
 
     dispatch(login({
-      login: loginRef.current.value,
+      email: loginRef.current.value,
       password: passwordRef.current.value,
     }));
   };
+
+  const autorhize = useSelector((state) => state.authorizationStatus === AuthorizationStatus.AUTH);
+  // const how = useSelector((state) => typeof state.curentUser.id !== `undefined`);
+
+  if (autorhize) {
+    return <Redirect to={AppRoute.ROOT}/>;
+  }
 
   return (
     <div className="user-page">
@@ -33,19 +43,19 @@ const SingIn = () => {
       </header>
 
       <div className="sign-in user-page__content">
-        <form onClick={handleSubmit} action="#" className="sign-in__form">
+        <form onSubmit={handleSubmit} className="sign-in__form">
           <div className="sign-in__fields">
             <div className="sign-in__field">
-              <input ref={loginRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
+              <input ref={loginRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" required />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
             <div className="sign-in__field">
-              <input ref={passwordRef} className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" />
+              <input ref={passwordRef} className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" required />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
           </div>
           <div className="sign-in__submit">
-            <button onClick={() => history.push(`/`)} className="sign-in__btn" type="submit">Sign in</button>
+            <button className="sign-in__btn" type="submit">Sign in</button>
           </div>
         </form>
       </div>
@@ -65,10 +75,6 @@ const SingIn = () => {
       </footer>
     </div>
   );
-};
-
-SingIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SingIn;

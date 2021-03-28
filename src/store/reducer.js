@@ -5,6 +5,7 @@ const initialState = {
   films: [],
   authInfo: {},
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  currentUser: {},
 };
 
 export const reducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ export const reducer = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return {
         ...state, authorizationStatus: action.payload,
+      };
+
+    case ActionType.CURRENT_USER:
+      return {
+        ...state, currentUser: action.payload,
       };
 
 

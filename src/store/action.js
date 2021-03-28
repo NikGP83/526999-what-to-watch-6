@@ -5,6 +5,7 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `<h2> Необходима авторизация</h2>`,
   AUTHORIZATION_CHANGED: `Hz`,
   REDIRECT_TO_ROUTE: `/`,
+  CURRENT_USER: `LOAD_USER_PROFILE`,
 };
 
 
@@ -13,4 +14,5 @@ export const ActionCreator = {
   requireAuthorization: (payload) => ({type: ActionType.REQUIRED_AUTHORIZATION, payload}),
   authorizationChanged: (payload) => ({type: ActionType.AUTHORIZATION_CHANGED, payload}),
   redirectToRoute: (url) => ({type: ActionType.REDIRECT_TO_ROUTE, payload: url}),
+  loadUserProfile: (payload) => ({type: ActionType.CURRENT_USER, payload}),
 };

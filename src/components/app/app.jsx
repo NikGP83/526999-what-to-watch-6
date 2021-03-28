@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import MainPage from '../main-page/main-page';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter as BrowserRouter, Redirect} from 'react-router-dom';
-import SignIn from '../header/sign-in';
 import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import Player from '../player/player';
@@ -41,9 +40,6 @@ const App = () => {
           </Route>
           <Route exact path="/catalog/:genre">
             <MainPage />
-          </Route>
-          <Route exact path="/login">
-            <SignIn />
           </Route>
           <Route exact path="/films/">
             <MoviePage />
