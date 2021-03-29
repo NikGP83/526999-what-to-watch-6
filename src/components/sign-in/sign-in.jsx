@@ -1,10 +1,8 @@
-import React, { useRef } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
-import { Redirect } from 'react-router';
-import { login } from '../../api/api-actions';
-import { AuthorizationStatus, AppRoute } from '../../const';
-import { redirect } from '../../store/redirect';
-
+import React, {useRef} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Redirect} from 'react-router';
+import {login} from '../../api/api-actions';
+import {AuthorizationStatus, AppRoute} from '../../const';
 
 const SingIn = () => {
   const dispatch = useDispatch();
@@ -22,7 +20,6 @@ const SingIn = () => {
   };
 
   const autorhize = useSelector((state) => state.authorizationStatus === AuthorizationStatus.AUTH);
-  // const how = useSelector((state) => typeof state.curentUser.id !== `undefined`);
 
   if (autorhize) {
     return <Redirect to={AppRoute.ROOT}/>;

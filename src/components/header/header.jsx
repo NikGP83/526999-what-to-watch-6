@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useCurrentUser } from './use-current-user';
+import {Link} from 'react-router-dom';
+import {useCurrentUser} from './use-current-user';
 
 const Header = () => {
   const userProfile = useCurrentUser();
-  const { email } = userProfile;
+  const {email} = userProfile;
 
 
   return (
