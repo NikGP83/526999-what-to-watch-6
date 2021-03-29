@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {useCurrentUser} from './use-current-user';
 
-const Header = (profileData) => {
-  const {} = profileData;
+const Header = () => {
+  const userProfile = useCurrentUser();
+  const {email} = userProfile;
+
 
   return (
     <header className="page-header movie-card__head">
@@ -15,6 +18,7 @@ const Header = (profileData) => {
       </div>
 
       <div className="user-block">
+        <p>{email}</p>
         <div className="user-block__avatar">
           <Link to='/my-list'>
             <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
