@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Header = () => {
+const Header = (profileData) => {
+  const {} = profileData;
+
   return (
     <header className="page-header movie-card__head">
       <div className="logo">

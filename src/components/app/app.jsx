@@ -31,6 +31,7 @@ const App = () => {
     });
   }, [hasFilm]);
 
+
   if (hasFilm) {
     return (
       <BrowserRouter history={browserHistory}>

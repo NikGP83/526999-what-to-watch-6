@@ -11,5 +11,9 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 export const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
   .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-  .then((data) => dispatch(ActionCreator.loadUserProfile(data)))
 );
+
+export const userProfile = () => (dispatch, _getState, api) => {
+  api.get(APIRoute.LOGIN)
+  .then((data) => dispatch(ActionCreator.loadUserProfile(data)));
+};

@@ -1,20 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import MovieList from '../movie-list/movie-list';
 import GenreList from '../genre-list/genre-list';
-import {shallowEqual, useSelector} from 'react-redux';
+import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {makeUriSafeString} from '../../utils';
 import Header from '../header/header';
+import {userProfile} from '../../api/api-actions';
 
 
 const MainPage = () => {
   const {genre} = useParams();
   const filmIds = useSelector((state) => state.films.filter((film) => makeUriSafeString(film.genre) === genre || !genre).map((el) => el.id), shallowEqual);
+  const dispatch = useDispatch();
 
-  const authorizationStatus = useSelector((state) => state.authorizationStatus)
-  console.log(authorizationStatus)
-
+  useEffect(() => {
+    dispatch(userProfile());
+  }, []);
 
   return (
     <>
