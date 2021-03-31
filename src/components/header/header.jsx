@@ -1,21 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {useCurrentUser} from './use-current-user';
+import Breadcrumbs from '../breadcrumbs/breadcrumbs';
+import Logo from '../logo/logo';
 
 const Header = () => {
   const userProfile = useCurrentUser();
   const {email} = userProfile;
+  const {id} = useParams();
 
+  console.log(id)
 
   return (
     <header className="page-header movie-card__head">
-      <div className="logo">
-        <Link className="logo__link" to="/">
-          <span className="logo__letter logo__letter--1">W</span>
-          <span className="logo__letter logo__letter--2">T</span>
-          <span className="logo__letter logo__letter--3">W</span>
-        </Link>
-      </div>
+      <Logo/>
+
+      {id === `undefined` ? <Breadcrumbs/> : null}
 
       <div className="user-block">
         {typeof userProfile !== `undefined` ?
