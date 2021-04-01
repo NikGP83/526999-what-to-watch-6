@@ -8,6 +8,7 @@ import MoviePageInList from './movie-page-in-list';
 import {useSelector} from 'react-redux';
 import Header from '../header/header';
 import Logo from '../logo/logo';
+import FilmItem from '../film-item/film-item';
 
 
 const selector = (tab) => {
@@ -24,12 +25,14 @@ const MoviePage = () => {
   const {id, tab} = useParams();
   const iid = Number(id);
   const searchResult = (useSelector((state) => state.films.find((el) => el.id === iid)));
+  const {posterImage, filmName, genre, released, backgrounImage} = searchResult;
+  const searchGenreFilms = (useSelector((state) => state.films.filter((el) => el.genre === genre)));
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }
 
   const Content = selector(tab);
-  const {posterImage, filmName, genre, released, backgrounImage} = searchResult;
+
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -88,15 +91,11 @@ const MoviePage = () => {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
 
+            {searchGenreFilms.slice(0, 4).map(() => {
+              return <FilmItem to={`/films/${id}`} key={id} id={id} />;
+            })
+            }
 
           </div>
         </section>
