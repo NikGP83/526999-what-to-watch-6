@@ -13,6 +13,7 @@ import {PRELOADER} from '../../const';
 import {useFilmLoaded} from '../../store/use-film-loaded';
 import SingIn from '../sign-in/sign-in';
 import browserHistory from '../../browser-history';
+import PageNotFound from '../page-not-found/page-not-found';
 
 const App = () => {
 
@@ -60,11 +61,11 @@ const App = () => {
           <Route exact path="/login">
             <SingIn/>
           </Route>
-          <Route exact path="/not-found">
-            <h2>404 Not Found</h2>
+          <Route exact path="/page-not-found">
+            <PageNotFound/>
           </Route>
           <Route>
-            <Redirect to="/not-found" />
+            <Redirect to="/page-not-found" />
           </Route>
         </Switch>
       </BrowserRouter>

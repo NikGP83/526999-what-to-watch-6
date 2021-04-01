@@ -41,7 +41,7 @@ const AddReview = () => {
             </a>
           </div>
 
-          <nav className="breadcrumbs">
+          {/* <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
                 <a href="movie-page.html" className="breadcrumbs__link">{filmName}</a>
@@ -50,7 +50,7 @@ const AddReview = () => {
                 <a className="breadcrumbs__link">Add review</a>
               </li>
             </ul>
-          </nav>
+          </nav> */}
 
           <div className="user-block">
             <div className="user-block__avatar">
