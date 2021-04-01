@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useLocation, useParams} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {useCurrentUser} from './use-current-user';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Logo from '../logo/logo';

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router';
 import {login} from '../../api/api-actions';
 import {AuthorizationStatus, AppRoute} from '../../const';
+import Logo from '../logo/logo';
 
 const SingIn = () => {
   const dispatch = useDispatch();
@@ -59,11 +60,7 @@ const SingIn = () => {
 
       <footer className="page-footer">
         <div className="logo">
-          <a href="main.html" className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          <Logo/>
         </div>
 
         <div className="copyright">
