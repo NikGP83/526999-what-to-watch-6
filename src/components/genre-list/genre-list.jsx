@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallowEqual, useSelector} from 'react-redux';
 import {Link, useParams} from 'react-router-dom';
+
 import {makeUriSafeString} from '../../utils';
 import {getGenres} from '../../utils';
 

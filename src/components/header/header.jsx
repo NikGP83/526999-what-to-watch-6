@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useLocation, useParams} from 'react-router-dom';
 import {useCurrentUser} from './use-current-user';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Logo from '../logo/logo';
@@ -7,13 +7,13 @@ import Logo from '../logo/logo';
 const Header = () => {
   const userProfile = useCurrentUser();
   const {email} = userProfile;
-  const {films} = useParams();
+  const location = useLocation();
 
   return (
     <header className="page-header movie-card__head">
       <Logo />
 
-      {films === `undefined` ? null : <Breadcrumbs />}
+      {/* {location === `films` ? <Breadcrumbs /> : null} */}
 
       <div className="user-block">
         {userProfile !== `undefined` ?

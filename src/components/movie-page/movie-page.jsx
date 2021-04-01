@@ -6,6 +6,7 @@ import MoviePageDetails from './movie-page-details';
 import MoviePageReviews from './movie-page-reviews';
 import MoviePageInList from './movie-page-in-list';
 import {useSelector} from 'react-redux';
+import Header from '../header/header';
 
 
 const selector = (tab) => {
@@ -27,34 +28,18 @@ const MoviePage = () => {
   }
 
   const Content = selector(tab);
-  const {previewImage, filmName, genre, released} = searchResult;
+  const {posterImage, filmName, genre, released, backgrounImage} = searchResult;
   return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={previewImage} alt={filmName} />
+            <img src={backgrounImage} alt={filmName} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <Link className="logo__link" to="/">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <Link to='/my-list'>
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </Link>
-              </div>
-            </div>
-          </header>
+          <Header/>
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -86,7 +71,7 @@ const MoviePage = () => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={previewImage} alt={filmName} width="218" height="327" />
+              <img src={posterImage} alt={filmName} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -160,7 +145,8 @@ const MoviePage = () => {
 
 MoviePage.propTypes = {
   filmById: PropTypes.func,
-  previewImage: PropTypes.string,
+  posterImage: PropTypes.string,
+  backgrounImage: PropTypes.string,
   filmName: PropTypes.string,
   genre: PropTypes.string,
 };

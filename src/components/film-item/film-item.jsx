@@ -11,13 +11,14 @@ const FilmItem = (props) => {
   if (typeof filmByIdResult === `undefined`) {
     window.location.reload();
   }
-  const {filmName, posterImage, videoLink} = filmByIdResult;
+  const {filmName, videoLink, previewImage} = filmByIdResult;
+
 
   return (
     <article onMouseEnter={eventEnterHandler} onMouseLeave={eventLeaveHandler} className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
         <Link to={to} >
-          <VideoPlayer videoLink={videoLink} posterImage={posterImage} activeMovieId={activeMovieId}/>
+          <VideoPlayer videoLink={videoLink} posterImage={previewImage} activeMovieId={activeMovieId}/>
         </Link>
       </div>
       <h3 className="small-movie-card__title">
