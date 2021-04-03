@@ -15,6 +15,9 @@ const MainPage = () => {
   const {genre} = useParams();
   const filmIds = useSelector((state) => state.films.filter((film) => makeUriSafeString(film.genre) === genre || !genre).map((el) => el.id), shallowEqual);
   const dispatch = useDispatch();
+  const promoFilmDataId = useSelector((state) => state.promoFilm.data.id);
+  const promoDataFilm = useSelector((state) => state.films[promoFilmDataId - 1]);
+  const {backgrounImage, filmName, posterImage, released} = promoDataFilm;
 
   useEffect(() => {
     dispatch(userProfile());
@@ -24,7 +27,7 @@ const MainPage = () => {
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={backgrounImage} alt={filmName} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -34,14 +37,14 @@ const MainPage = () => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={posterImage} alt={`${filmName} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{filmName}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">

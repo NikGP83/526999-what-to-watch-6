@@ -17,3 +17,8 @@ export const userProfile = () => (dispatch, _getState, api) => {
   api.get(APIRoute.LOGIN)
   .then((data) => dispatch(ActionCreator.loadUserProfile(data)));
 };
+
+export const getPromoFilm = () => (dispatch, _getState, api) => {
+  api.get(`/films/promo`)
+.then((data) => dispatch(ActionCreator.loadPromoFilm(data)));
+};

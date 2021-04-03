@@ -6,6 +6,7 @@ export const ActionType = {
   AUTHORIZATION_CHANGED: `Hz`,
   REDIRECT_TO_ROUTE: `/`,
   CURRENT_USER: `LOAD_USER_PROFILE`,
+  LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
 };
 
 
@@ -15,4 +16,5 @@ export const ActionCreator = {
   authorizationChanged: (payload) => ({type: ActionType.AUTHORIZATION_CHANGED, payload}),
   redirectToRoute: (url) => ({type: ActionType.REDIRECT_TO_ROUTE, payload: url}),
   loadUserProfile: (payload) => ({type: ActionType.CURRENT_USER, payload}),
+  loadPromoFilm: (payload) => ({type: ActionType.LOAD_PROMO_FILM, payload}),
 };

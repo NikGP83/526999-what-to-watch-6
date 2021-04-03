@@ -6,6 +6,7 @@ const initialState = {
   authInfo: {},
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   currentUser: {},
+  promoFilm: {},
 };
 
 export const reducer = (state = initialState, action) => {
@@ -23,6 +24,11 @@ export const reducer = (state = initialState, action) => {
     case ActionType.CURRENT_USER:
       return {
         ...state, currentUser: action.payload,
+      };
+
+    case ActionType.LOAD_PROMO_FILM:
+      return {
+        ...state, promoFilm: action.payload,
       };
 
 

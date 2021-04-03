@@ -10,7 +10,7 @@ const Breadcrumbs = () => {
           <a href="movie-page.html" className="breadcrumbs__link"></a>
         </li>
         <li className="breadcrumbs__item">
-          <Link className="breadcrumbs__link">Add review</Link>
+          <Link to={`/add-review`} className="breadcrumbs__link">Add review</Link>
         </li>
       </ul>
     </nav>

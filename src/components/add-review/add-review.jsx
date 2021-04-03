@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link, useParams, Redirect} from 'react-router-dom';
+import {useParams, Redirect} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import Header from '../header/header';
 

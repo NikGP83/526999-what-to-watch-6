@@ -14,11 +14,12 @@ import {useFilmLoaded} from '../../store/use-film-loaded';
 import SingIn from '../sign-in/sign-in';
 import browserHistory from '../../browser-history';
 import PageNotFound from '../page-not-found/page-not-found';
+import {getPromoFilm} from '../../api/api-actions';
 
 const App = () => {
-
   const hasFilm = useFilmLoaded();
   const dispatch = useDispatch();
+  dispatch(getPromoFilm());
   useEffect(() => {
     if (hasFilm) {
       return;
