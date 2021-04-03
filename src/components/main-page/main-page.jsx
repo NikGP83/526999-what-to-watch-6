@@ -8,6 +8,7 @@ import {makeUriSafeString} from '../../utils';
 import Header from '../header/header';
 import {userProfile} from '../../api/api-actions';
 import Logo from '../logo/logo';
+import AddToMyListButton from '../my-list/add-to-list-btn';
 
 
 const MainPage = () => {
@@ -50,12 +51,8 @@ const MainPage = () => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <AddToMyListButton />
+
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import Logo from '../logo/logo';
 
 
 const MyList = () => {
-  const filmIds = getFilmIds();
+  // const filmIds = getFilmIds();
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -32,7 +32,7 @@ const MyList = () => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__movies-list">
-          {filmIds.map((id) => (<FilmItem to={`/films/${id}`} key={id} {...getFilmById(id)} />))}
+          {/* {filmIds.map((id) => (<FilmItem to={`/films/${id}`} key={id} {...getFilmById(id)} />))} */}
         </div>
       </section>
 
