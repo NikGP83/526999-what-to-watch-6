@@ -2,25 +2,12 @@ import React from 'react';
 import {Link, Redirect, useParams} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Tabs from './tabs';
-import MoviePageDetails from './movie-page-details';
-import MoviePageReviews from './movie-page-reviews';
-import MoviePageInList from './movie-page-in-list';
 import {useSelector} from 'react-redux';
 import Header from '../header/header';
 import Logo from '../logo/logo';
 import FilmItem from '../film-item/film-item';
+import {tabSelector} from './tab-selector';
 
-
-const selector = (tab) => {
-  switch (tab) {
-    case `details`:
-      return MoviePageDetails;
-    case `reviews`:
-      return MoviePageReviews;
-    default:
-      return MoviePageInList;
-  }
-};
 const MoviePage = () => {
   const {id, tab} = useParams();
   const iid = Number(id);
@@ -31,7 +18,7 @@ const MoviePage = () => {
     return <Redirect to="/not-found" />;
   }
 
-  const Content = selector(tab);
+  const Content = tabSelector(tab);
 
   return (
     <>
@@ -92,8 +79,8 @@ const MoviePage = () => {
 
           <div className="catalog__movies-list">
 
-            {searchGenreFilms.slice(0, 4).map(() => {
-              return <FilmItem to={`/films/${id}`} key={id} id={id} />;
+            {searchGenreFilms.slice(0, 7).map((genres) => {
+              return <FilmItem to={`/films/${id}`} key={genres} id={id} />;
             })
             }
 

@@ -9,6 +9,7 @@ const MovieList = (props) => {
   const {filmIds, initialCount} = props;
   const [activeMovieId, setActiveMovieId] = useState(undefined);
   const [filmCount, setFilmCount] = useState(initialCount);
+  console.log(filmIds)
 
   let previewVideoTimer = null;
   const buttonShowMoreClick = () => {
