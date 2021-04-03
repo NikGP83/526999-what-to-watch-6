@@ -8,6 +8,7 @@ import Logo from '../logo/logo';
 import FilmItem from '../film-item/film-item';
 import {tabSelector} from './tab-selector';
 import AddToMyListButton from '../my-list/add-to-list-btn';
+import {MAX_MORE_LIKE_FILMS_COUNT} from '../../const';
 
 const MoviePage = () => {
   const {id, tab} = useParams();
@@ -15,6 +16,7 @@ const MoviePage = () => {
   const searchResult = (useSelector((state) => state.films.find((el) => el.id === iid)));
   const {posterImage, filmName, genre, released, backgrounImage} = searchResult;
   const searchGenreFilms = (useSelector((state) => state.films.filter((el) => el.genre === genre)));
+  const sfg = searchGenreFilms.map((films) => films.id);
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }
@@ -75,8 +77,8 @@ const MoviePage = () => {
 
           <div className="catalog__movies-list">
 
-            {searchGenreFilms.slice(0, 7).map((genres) => {
-              return <FilmItem to={`/films/${id}`} key={genres} id={id} />;
+            {sfg.slice(0, MAX_MORE_LIKE_FILMS_COUNT).map((moreLikeThisFilms) => {
+              return <FilmItem to={`/films/${moreLikeThisFilms}`} key={moreLikeThisFilms} id={moreLikeThisFilms} />;
             })
             }
 
