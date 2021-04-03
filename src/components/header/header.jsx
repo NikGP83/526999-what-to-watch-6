@@ -6,14 +6,13 @@ import Logo from '../logo/logo';
 
 const Header = () => {
   const userProfile = useCurrentUser();
-  const {email} = userProfile;
   const location = useLocation();
 
   return (
     <header className="page-header movie-card__head">
       <Logo />
-
-      {/* {location === `films` ? <Breadcrumbs /> : null} */}
+      {location.pathname === `/my-list` ? <h1 className="page-title user-page__title">My list</h1> : null}
+      {location.pathname === `/add-review` ? <Breadcrumbs /> : null}
 
       <div className="user-block">
         {userProfile !== `undefined` ?
