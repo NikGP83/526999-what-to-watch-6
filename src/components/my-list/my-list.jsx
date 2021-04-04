@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FilmItem from '../film-item/film-item';
-import {getFilmIds, getFilmById} from '../mocks/mock';
 import Logo from '../logo/logo';
 import Header from '../header/header';
 

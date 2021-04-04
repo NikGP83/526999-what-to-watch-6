@@ -16,7 +16,8 @@ const MoviePage = () => {
   const searchResult = (useSelector((state) => state.films.find((el) => el.id === iid)));
   const {posterImage, filmName, genre, released, backgrounImage} = searchResult;
   const searchGenreFilms = (useSelector((state) => state.films.filter((el) => el.genre === genre)));
-  const sfg = searchGenreFilms.map((films) => films.id);
+  const moreLikeFilms = searchGenreFilms.map((films) => films.id);
+
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }
@@ -77,7 +78,7 @@ const MoviePage = () => {
 
           <div className="catalog__movies-list">
 
-            {sfg.slice(0, MAX_MORE_LIKE_FILMS_COUNT).map((moreLikeThisFilms) => {
+            {moreLikeFilms.slice(0, MAX_MORE_LIKE_FILMS_COUNT).map((moreLikeThisFilms) => {
               return <FilmItem to={`/films/${moreLikeThisFilms}`} key={moreLikeThisFilms} id={moreLikeThisFilms} />;
             })
             }

@@ -7,6 +7,7 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `/`,
   CURRENT_USER: `LOAD_USER_PROFILE`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
+  LOAD_COMMENTS: `LOAD_COMMENTS`,
 };
 
 
@@ -17,4 +18,5 @@ export const ActionCreator = {
   redirectToRoute: (url) => ({type: ActionType.REDIRECT_TO_ROUTE, payload: url}),
   loadUserProfile: (payload) => ({type: ActionType.CURRENT_USER, payload}),
   loadPromoFilm: (payload) => ({type: ActionType.LOAD_PROMO_FILM, payload}),
+  loadComments: (payload) => ({type: ActionType.LOAD_COMMENTS, payload}),
 };
