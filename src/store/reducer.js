@@ -7,7 +7,7 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   currentUser: {},
   promoFilm: {},
-  comments: [],
+  comments: {},
 };
 
 export const reducer = (state = initialState, action) => {
@@ -29,11 +29,15 @@ export const reducer = (state = initialState, action) => {
 
     case ActionType.LOAD_PROMO_FILM:
       return {
-        ...state, promoFilm: action.payload,
+
+        ...state,
+        films: ((films, promo) => films)(state.films, action.payload),
+        promoFilm: action.payload,
       };
     case ActionType.LOAD_COMMENTS:
+      const {id, comments} = action.payload;
       return {
-        ...state, comments: action.payload,
+        ...state, comments: {...state.comments, [id]: comments}
       };
 
 

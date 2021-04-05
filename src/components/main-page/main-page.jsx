@@ -16,8 +16,7 @@ const MainPage = () => {
   const filmIds = useSelector((state) => state.films.filter((film) => makeUriSafeString(film.genre) === genre || !genre).map((el) => el.id), shallowEqual);
   const dispatch = useDispatch();
   const promoFilmDataId = useSelector((state) => state.promoFilm.data.id);
-  console.log(promoFilmDataId)
-  const promoDataFilm = useSelector((state) => state.films[promoFilmDataId]);
+  const promoDataFilm = useSelector((state) => state.films.find((el) => el.id === promoFilmDataId));
   const {backgrounImage, filmName, posterImage, released} = promoDataFilm;
 
   useEffect(() => {

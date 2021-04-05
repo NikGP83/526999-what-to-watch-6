@@ -23,7 +23,7 @@ export const getPromoFilm = () => (dispatch, _getState, api) => {
 .then((data) => dispatch(ActionCreator.loadPromoFilm(data)));
 };
 
-export const getComments = () => (dispatch, _getState, api) => {
-  api.get(`/comments/42`)
-  .then((data) => dispatch(ActionCreator.loadComments(data)));
+export const getComments = (id) => (dispatch, _getState, api) => {
+  api.get(`/comments/${id}`)
+  .then((response) => dispatch(ActionCreator.loadComments({id, comments: response.data})));
 };
