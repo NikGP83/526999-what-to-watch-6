@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
-import { getComments } from '../../api/api-actions';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useParams} from 'react-router';
+import {getComments} from '../../api/api-actions';
 
 
 const MoviePageReviews = () => {
-  const { id } = useParams();
+  const {id} = useParams();
 
   const dispatch = useDispatch();
 
@@ -18,9 +18,10 @@ const MoviePageReviews = () => {
     dispatch(getComments(id));
   }, [id]);
 
+
   if (Array.isArray(userComments)) {
-    if (userComments.lengh > 0) {
-      return <>{userComments.map(({ id: commentId, comment, user, date, rating }) => (
+    if (userComments.length > 0) {
+      return <>{userComments.map(({id: commentId, comment, user, date, rating}) => (
 
         <div key={commentId} className="movie-card__reviews movie-card__row">
           <div className="movie-card__reviews-col">

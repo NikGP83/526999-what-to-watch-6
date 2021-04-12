@@ -1,6 +1,7 @@
 import {AuthorizationStatus} from "../const";
 import {ActionType} from "./action";
 
+
 const initialState = {
   films: [],
   authInfo: {},
