@@ -7,7 +7,7 @@ export const tabSelector = (tab) => {
   switch (tab) {
     case `details`:
       return MoviePageDetails;
-    case `reviews`:
+    case `page-reviews`:
       return MoviePageReviews;
     default:
       return MoviePageInList;

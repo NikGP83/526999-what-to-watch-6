@@ -29,6 +29,6 @@ export const getComments = (id) => (dispatch, _getState, api) => {
 };
 
 export const postComments = (comment, id) => (dispatch, _getState, api) => {
-  api.post(`/comments/${id}`)
+  api.post(`/comments/${id}`, {id, comment})
   .then(() => dispatch(ActionCreator.postMyComment({id, comment})));
 };

@@ -15,8 +15,8 @@ const Tabs = () => {
           <li className={typeof tab === `string` && tab.toLowerCase() === `details` ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
             <Link to={`/films/${id}/details`} className="movie-nav__link">Details</Link>
           </li>
-          <li className={typeof tab === `string` && tab.toLowerCase() === `reviews` ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
-            <Link to={`/films/${id}/reviews`} className="movie-nav__link">Reviews</Link>
+          <li className={typeof tab === `string` && tab.toLowerCase() === `page-reviews` ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}>
+            <Link to={`/films/${id}/page-reviews`} className="movie-nav__link">Reviews</Link>
           </li>
         </ul>
       </nav>

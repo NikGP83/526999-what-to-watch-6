@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Redirect, useParams} from 'react-router-dom';
+import {generatePath, Link, Redirect, useLocation, useParams, useRouteMatch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Tabs from './tabs';
 import {useSelector} from 'react-redux';
@@ -17,6 +17,10 @@ const MoviePage = () => {
   const {posterImage, filmName, genre, released, backgrounImage} = searchResult;
   const searchGenreFilms = (useSelector((state) => state.films.filter((el) => el.genre === genre)));
   const moreLikeFilms = searchGenreFilms.map((films) => films.id);
+  // const {id: idParams, tab: forParams} = useRouteMatch();
+
+  // const myPath = generatePath(`/:id/:tab(review)`, {idParams, forParams});
+  // console.log(params)
 
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;

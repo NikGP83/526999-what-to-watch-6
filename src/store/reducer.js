@@ -40,6 +40,10 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state, comments: {...state.comments, [id]: comments}
       };
+    case ActionType.POST_MY_COMMENT:
+      return {
+        ...state, comments: action.payload,
+      };
 
 
     default:

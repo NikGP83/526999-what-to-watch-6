@@ -8,6 +8,7 @@ export const ActionType = {
   CURRENT_USER: `LOAD_USER_PROFILE`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
+  POST_MY_COMMENT: `POST_MY_COMMENT`,
 };
 
 
@@ -19,4 +20,5 @@ export const ActionCreator = {
   loadUserProfile: (payload) => ({type: ActionType.CURRENT_USER, payload}),
   loadPromoFilm: (payload) => ({type: ActionType.LOAD_PROMO_FILM, payload}),
   loadComments: (payload) => ({type: ActionType.LOAD_COMMENTS, payload}),
+  postMyComment: (payload) => ({type: ActionType.POST_MY_COMMENT, payload}),
 };
