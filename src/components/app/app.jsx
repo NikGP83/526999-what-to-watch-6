@@ -44,8 +44,8 @@ const App = () => {
           <Route exact path="/catalog/:genre">
             <MainPage />
           </Route>
-          <Route exact path="/films/">
-            <MoviePage />
+          <Route exact path="/films/:id/review">
+            <AddReview />
           </Route>
           <Route exact path="/films/:id/:tab?">
             <MoviePage />
@@ -53,9 +53,7 @@ const App = () => {
           <Route exact path="/my-list">
             <MyList />
           </Route>
-          <Route exact path="/films/:id?/review">
-            <AddReview />
-          </Route>
+
           <Route exact path="/player/:id?">
             <Player />
           </Route>

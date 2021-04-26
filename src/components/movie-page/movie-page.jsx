@@ -17,10 +17,11 @@ const MoviePage = () => {
   const {posterImage, filmName, genre, released, backgrounImage} = searchResult;
   const searchGenreFilms = (useSelector((state) => state.films.filter((el) => el.genre === genre)));
   const moreLikeFilms = searchGenreFilms.map((films) => films.id);
-  // const {id: idParams, tab: forParams} = useRouteMatch();
+  // const {params} = useRouteMatch();
+  // const whereAmI = useLocation()
 
-  // const myPath = generatePath(`/:id/:tab(review)`, {idParams, forParams});
-  // console.log(params)
+  // const myPath = generatePath(`/:id/:tab(review)`, {params});
+  // console.log(whereAmI, params)
 
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
@@ -56,7 +57,7 @@ const MoviePage = () => {
                   <span>Play</span>
                 </button>
                 <AddToMyListButton />
-                <Link to={`${id}/review`} className="btn movie-card__button">Add review</Link>
+                <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>

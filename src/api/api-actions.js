@@ -28,7 +28,7 @@ export const getComments = (id) => (dispatch, _getState, api) => {
   .then((response) => dispatch(ActionCreator.loadComments({id, comments: response.data})));
 };
 
-export const postComments = (comment, id) => (dispatch, _getState, api) => {
-  api.post(`/comments/${id}`, {id, comment})
-  .then(() => dispatch(ActionCreator.postMyComment({id, comment})));
+export const postComments = (id, {comment, rating}) => (dispatch, _getState, api) => {
+  api.post(`/comments/${id}`, {rating, comment})
+  .then((response) => dispatch(ActionCreator.loadComments({id, comments: response.data})));
 };

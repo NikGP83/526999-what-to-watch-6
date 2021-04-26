@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {useParams, Redirect} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import { useParams, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../header/header';
+import { postComments } from '../../api/api-actions';
+import { toCamelCase } from '../../utils';
+
+const INITIAL_RATING = 0;
 
 const AddReview = () => {
-  const {id} = useParams();
+
+  const { id } = useParams();
   const iid = Number(id);
   const searchResult = (useSelector((state) => state.films.find((el) => el.id === iid)));
   if (typeof searchResult === `undefined`) {
     return <Redirect to="/not-found" />;
   }
-  const {previewImage, filmName} = searchResult;
-  const [userReview, setUserReview] = React.useState({
-    "review-text": ``
-  });
+  const { previewImage, filmName } = searchResult;
+
+  const [rating, setRating] = useState(INITIAL_RATING);
+  const [comments, setComments] = useState(``);
+
+
+  const dispatch = useDispatch();
+
+
+
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-  };
-  const handleFieldChange = (evt) => {
-    const {name, value} = evt.target;
-    setUserReview({...userReview, [name]: value});
+    console.log(rating, comments)
+    const formData = new FormData(evt.target);
+    const formDataResult = [...formData.entries()].reduce((acc, b) => {acc[toCamelCase(b[0])] = b[1]; return acc;}, {});
+
+    dispatch(postComments(id, {
+      rating: formDataResult.rating,
+      comment: formDataResult.reviewText,
+    }));
   };
 
   return (
@@ -41,9 +57,9 @@ const AddReview = () => {
       </div>
 
       <div className="add-review">
-        <form action="#" className="add-review__form">
+        <form onSubmit={handleSubmit} action="#" className="add-review__form">
           <div className="rating">
-            <div className="rating__stars">
+            <div onChange={(evt) => setRating(evt.target.value)} className="rating__stars">
               <input className="rating__input" id="star-1" type="radio" name="rating" value="1" />
               <label className="rating__label" htmlFor="star-1">Rating 1</label>
 
@@ -77,9 +93,9 @@ const AddReview = () => {
           </div>
 
           <div className="add-review__text">
-            <textarea onInput={handleFieldChange} className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+            <textarea onChange={(evt) => setComments(evt.target.value)} className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
             <div className="add-review__submit">
-              <button onClick={handleSubmit} className="add-review__btn" type="submit">Post</button>
+              <button className="add-review__btn" type="submit">Post</button>
             </div>
           </div>
         </form>

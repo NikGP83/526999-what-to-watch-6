@@ -22,3 +22,4 @@ export const ActionCreator = {
   loadComments: (payload) => ({type: ActionType.LOAD_COMMENTS, payload}),
   postMyComment: (payload) => ({type: ActionType.POST_MY_COMMENT, payload}),
 };
+
